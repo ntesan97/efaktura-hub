@@ -11,193 +11,157 @@ st.markdown("""
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html, body, [class*="css"], .stApp {
     font-family: 'DM Sans', sans-serif;
-    background-color: #0a0a0a;
-    color: #d4d4d4;
+    background-color: #f7f7f5;
+    color: #1a1a1a;
 }
-
 #MainMenu, footer, header { visibility: hidden; }
-.block-container { max-width: 720px; padding: 4rem 2rem 6rem; }
+.block-container { max-width: 680px; padding: 4rem 2rem 6rem; }
 
-/* ── Header ── */
 .hub-eyebrow {
     font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #404040;
-    margin-bottom: 1.2rem;
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #aaa; margin-bottom: 1rem;
 }
 .hub-title {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 2.4rem;
-    font-weight: 600;
-    color: #f0f0f0;
-    line-height: 1.1;
-    margin-bottom: 0.6rem;
-    letter-spacing: -0.03em;
+    font-size: 2.2rem; font-weight: 600; color: #111;
+    line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.6rem;
 }
 .hub-sub {
-    font-size: 0.95rem;
-    color: #505050;
-    line-height: 1.6;
-    max-width: 480px;
-    margin-bottom: 3.5rem;
+    font-size: 0.92rem; color: #888; line-height: 1.65;
+    max-width: 460px; margin-bottom: 3rem;
 }
+.section {
+    background: #fff; border: 1px solid #e8e8e4;
+    border-radius: 10px; padding: 1.75rem; margin-bottom: 1rem;
+}
+.section-header {
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 1.25rem; padding-bottom: 1.25rem;
+    border-bottom: 1px solid #f0f0ec;
+}
+.section-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+}
+.section-title { font-size: 0.95rem; font-weight: 600; color: #111; letter-spacing: -0.01em; }
+.section-desc { font-size: 0.8rem; color: #999; margin-top: 0.1rem; }
 
-/* ── Divider ── */
-.divider {
-    border: none;
-    border-top: 1px solid #1c1c1c;
-    margin: 2.5rem 0;
+.steps { display: flex; flex-direction: column; gap: 0.5rem; }
+.step-row { display: flex; align-items: stretch; gap: 0.75rem; }
+.step-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 28px; }
+.step-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 500; flex-shrink: 0;
 }
+.step-line { width: 1px; flex: 1; margin-top: 4px; background: #e8e8e4; min-height: 12px; }
+.step-content { flex: 1; padding-bottom: 0.5rem; }
 
-/* ── Section label ── */
-.section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #303030;
-    margin-bottom: 1.2rem;
+.tool-link {
+    display: flex; align-items: center; justify-content: space-between;
+    text-decoration: none; background: #f7f7f5;
+    border: 1px solid #e8e8e4; border-radius: 7px;
+    padding: 0.9rem 1.1rem; margin-top: 0.4rem;
+    transition: border-color 0.15s, background 0.15s, transform 0.12s;
 }
+.tool-link:hover { background: #f0f0ec; border-color: #d0d0cc; transform: translateY(-1px); }
+.tool-link-name { font-size: 0.88rem; font-weight: 600; color: #111; margin-bottom: 0.18rem; }
+.tool-link-hint { font-size: 0.75rem; color: #aaa; }
+.tool-link-arrow { font-size: 0.9rem; color: #ccc; margin-left: 1rem; flex-shrink: 0; transition: transform 0.15s; }
+.tool-link:hover .tool-link-arrow { transform: translateX(2px); }
 
-/* ── Cards ── */
-.card {
-    display: block;
-    text-decoration: none;
-    background: #111111;
-    border: 1px solid #1e1e1e;
-    border-radius: 6px;
-    padding: 1.5rem 1.75rem;
-    margin-bottom: 0.75rem;
-    transition: border-color 0.2s, background 0.2s, transform 0.15s;
-    position: relative;
-    overflow: hidden;
+.standalone-cards { display: flex; flex-direction: column; gap: 0.5rem; }
+.standalone-link {
+    display: flex; align-items: center; justify-content: space-between;
+    text-decoration: none; background: #f7f7f5;
+    border: 1px solid #e8e8e4; border-radius: 7px; padding: 1rem 1.1rem;
+    transition: border-color 0.15s, background 0.15s, transform 0.12s;
 }
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px; height: 100%;
-    background: var(--accent);
-    opacity: 0;
-    transition: opacity 0.2s;
-}
-.card:hover {
-    border-color: #2a2a2a;
-    background: #141414;
-    transform: translateX(3px);
-}
-.card:hover::before { opacity: 1; }
+.standalone-link:hover { background: #f0f0ec; border-color: #d0d0cc; transform: translateY(-1px); }
+.standalone-link-name { font-size: 0.88rem; font-weight: 600; color: #111; margin-bottom: 0.18rem; }
+.standalone-link-hint { font-size: 0.75rem; color: #aaa; }
+.standalone-link-arrow { font-size: 0.9rem; color: #ccc; margin-left: 1rem; flex-shrink: 0; transition: transform 0.15s; }
+.standalone-link:hover .standalone-link-arrow { transform: translateX(2px); }
 
-.card-step {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-    opacity: 0.8;
-}
-.card-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #e8e8e8;
-    margin-bottom: 0.4rem;
-    letter-spacing: -0.01em;
-}
-.card-desc {
-    font-size: 0.83rem;
-    color: #505050;
-    line-height: 1.55;
-}
-.card-arrow {
-    position: absolute;
-    right: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1rem;
-    color: #2a2a2a;
-    transition: color 0.2s, right 0.2s;
-}
-.card:hover .card-arrow {
-    color: var(--accent);
-    right: 1.2rem;
-}
-
-/* ── Note box ── */
-.note {
-    background: #0f0f0f;
-    border: 1px solid #1a1a1a;
-    border-left: 3px solid #c8f55a;
-    border-radius: 4px;
-    padding: 0.9rem 1.1rem;
-    margin-bottom: 0.75rem;
-    font-size: 0.82rem;
-    color: #505050;
-    line-height: 1.6;
-}
-.note strong { color: #c8f55a; font-weight: 500; }
-
-/* ── Footer ── */
 .hub-footer {
-    margin-top: 4rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    color: #252525;
-    text-align: center;
+    margin-top: 3rem; font-family: 'DM Mono', monospace;
+    font-size: 0.63rem; letter-spacing: 0.1em; color: #ccc; text-align: center;
 }
 </style>
 
-<div class="hub-eyebrow">Servier · Interni alati</div>
-<h1 class="hub-title">eFaktura<br>Konverteri</h1>
-<p class="hub-sub">Konverzija Business Central Excel exporta u UBL XML format za slanje putem Sistema eFaktura (SEF). Izaberi odgovarajući tip dokumenta.</p>
+<div class="hub-eyebrow">Interni alati · eFaktura</div>
+<h1 class="hub-title">eFaktura Konverteri</h1>
+<p class="hub-sub">Konverzija Business Central Excel exporta u UBL XML za slanje putem Sistema eFaktura.</p>
 
-<hr class="divider">
-
-<div class="section-label">Fakture</div>
-
-<div class="note">
-    <strong>Napomena za fakture:</strong> Przed konverzijom obavezno proveri lot brojeve u Lot Finder alatu i obogati Excel fajl ispravnim podacima.
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#f0fae0;">📄</div>
+    <div>
+      <div class="section-title">Fakture</div>
+      <div class="section-desc">Dva obavezna koraka — najpre obogati podatke, zatim konvertuj</div>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step-row">
+      <div class="step-left">
+        <div class="step-num" style="background:#f0fae0; color:#5a9e10;">1</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <a class="tool-link" href="https://tkvwdvijz4fhhyzkt2jrzf.streamlit.app/" target="_blank">
+          <div>
+            <div class="tool-link-name">Lot Enricher</div>
+            <div class="tool-link-hint">Obogati Excel fajl ispravnim lot brojevima pre konverzije</div>
+          </div>
+          <span class="tool-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-left">
+        <div class="step-num" style="background:#f0fae0; color:#5a9e10;">2</div>
+      </div>
+      <div class="step-content">
+        <a class="tool-link" href="https://invoice-converter-bng8er2uezdi2kklxzls6z.streamlit.app/" target="_blank">
+          <div>
+            <div class="tool-link-name">Konverter Faktura</div>
+            <div class="tool-link-hint">Konvertuj obogaćeni Excel u UBL Invoice XML (tip 380)</div>
+          </div>
+          <span class="tool-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
 
-<a class="card" href="https://invoice-converter-bng8er2uezdi2kklxzls6z.streamlit.app/" target="_blank" style="--accent: #c8f55a;">
-    <div class="card-step">Korak 1 od 2 · Lot Finder →  Korak 2 od 2 · Konverter</div>
-    <div class="card-title">Konverter Faktura</div>
-    <div class="card-desc">Konvertuje Posted Sales Invoice Excel export u UBL Invoice XML (tip 380). Koristi nakon provere lot brojeva.</div>
-    <span class="card-arrow">→</span>
-</a>
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#fff5e8;">📋</div>
+    <div>
+      <div class="section-title">Knjižna odobrenja</div>
+      <div class="section-desc">Izaberi tip prema nameni dokumenta</div>
+    </div>
+  </div>
+  <div class="standalone-cards">
+    <a class="standalone-link" href="https://dokument-o-smanjenju-ntssfgp8uwqeewqjnqzin5.streamlit.app/" target="_blank">
+      <div>
+        <div class="standalone-link-name">Dokument o smanjenju</div>
+        <div class="standalone-link-hint">Knjižno odobrenje vezano za konkretnu fakturu</div>
+      </div>
+      <span class="standalone-link-arrow">→</span>
+    </a>
+    <a class="standalone-link" href="https://dokument-o-smanjenju-za-period-w2iwapp4j6njpjsmvu8x54u.streamlit.app/" target="_blank">
+      <div>
+        <div class="standalone-link-name">Dokument o smanjenju za period</div>
+        <div class="standalone-link-hint">Periodično smanjenje — kvartalni rabati, godišnji bonusi</div>
+      </div>
+      <span class="standalone-link-arrow">→</span>
+    </a>
+  </div>
+</div>
 
-<hr class="divider">
-
-<div class="section-label">Knjižna odobrenja</div>
-
-<a class="card" href="https://tkvwdvijz4fhhyzkt2jrzf.streamlit.app/" target="_blank" style="--accent: #f5a623;">
-    <div class="card-step">Tip · Vezano za fakturu</div>
-    <div class="card-title">Knjižno Odobrenje — sa referencom na fakturu</div>
-    <div class="card-desc">Za knjižna odobrenja koja ispravljaju konkretnu fakturu. Potreban broj i datum originalne fakture.</div>
-    <span class="card-arrow">→</span>
-</a>
-
-<a class="card" href="https://dokument-o-smanjenju-za-period-w2iwapp4j6njpjsmvu8x54u.streamlit.app/" target="_blank" style="--accent: #f5a623;">
-    <div class="card-step">Tip · Periodično</div>
-    <div class="card-title">Knjižno Odobrenje — za period</div>
-    <div class="card-desc">Za periodična knjižna odobrenja (npr. kvartalni rabati). Unosi se samo period od/do, bez veze sa fakturom.</div>
-    <span class="card-arrow">→</span>
-</a>
-
-<a class="card" href="https://dokument-o-smanjenju-ntssfgp8uwqeewqjnqzin5.streamlit.app/" target="_blank" style="--accent: #f5a623;">
-    <div class="card-step">Tip · Ostalo</div>
-    <div class="card-title">Knjižno Odobrenje — opšti</div>
-    <div class="card-desc">Opšti konverter knjižnih odobrenja za ostale slučajeve koji ne spadaju u gornje kategorije.</div>
-    <span class="card-arrow">→</span>
-</a>
-
-<hr class="divider">
-
-<div class="hub-footer">Interni alat · Samo za internu upotrebu · mfin.gov.rs EN 16931 / UBL 2.1</div>
+<div class="hub-footer">Samo za internu upotrebu · EN 16931 / UBL 2.1 · mfin.gov.rs 2022</div>
 """, unsafe_allow_html=True)
