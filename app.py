@@ -123,12 +123,27 @@ html, body, [class*="css"], .stApp {
     <div class="step-row">
       <div class="step-left">
         <div class="step-num" style="background:#f0fae0; color:#5a9e10;">2</div>
+        <div class="step-line"></div>
       </div>
       <div class="step-content">
         <a class="tool-link" href="https://invoice-converter-bng8er2uezdi2kklxzls6z.streamlit.app/" target="_blank">
           <div>
             <div class="tool-link-name">Konverter Faktura</div>
             <div class="tool-link-hint">Konvertuj obogaćeni Excel u UBL Invoice XML (tip 380)</div>
+          </div>
+          <span class="tool-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-left">
+        <div class="step-num" style="background:#f0fae0; color:#5a9e10;">T</div>
+      </div>
+      <div class="step-content">
+        <a class="tool-link" href="https://invoice-converter-test-hqpzrwh5wxpvndxmrshypj.streamlit.app/" target="_blank">
+          <div>
+            <div class="tool-link-name">Konverter Faktura Test</div>
+            <div class="tool-link-hint">Test verzija konvertora — za proveravanje novih verzija</div>
           </div>
           <span class="tool-link-arrow">→</span>
         </a>
